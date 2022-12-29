@@ -29,7 +29,7 @@ def register():
     
 
         
-        users.insert_one({'username': request.form['username'], 'password': request.form['password'], 'email': request.form['email']})
+        users.insert_one({'username': request.form['username'], 'password': request.form['password'], 'email': request.form['email'],'Address': request.form['address'],'Mobile No.': request.form['mobile']})
         return redirect(url_for('login'))
 
     return render_template('register.html')
@@ -49,7 +49,8 @@ def login():
         if login_user:
             if request.form['password']==login_user['password'] :
                 session['username'] = request.form['username']
-                return render_template('welcome.html',name=request.form['username'])
+                dat=request.form
+                return render_template('welcome.html',data=login_user)
         
         
         return render_template('login.html',msg="Incorrect username or password")
@@ -61,6 +62,19 @@ def login():
 def logout():
     session.pop('username', None)
     return redirect(url_for('index'))
+
+@app.route('/edit', methods=['GET', 'POST'])
+def edit():
+    users = mongo.db.users
+    update_user = users.find_one({'username': session['username']})
+    if request.method=='POST':
+        users.update_one({"username":update_user['username']},{ "$set": { 'email': request.form['email'],'Address':request.form['address'] }}  )
+        update_user = users.find_one({'username': session['username']})
+        return render_template('welcome.html',data=update_user)
+
+    return render_template('edit.html',data=update_user)
+
+
 
 
 if __name__ == "__main__":

@@ -30,10 +30,20 @@
     <form class="form-signin" action="/register" method="POST">
       <label for="inputName" class="sr-only">Username</label>
       <input type="name" name="username" id="inputName" class="form-control" placeholder="Username" required autofocus>
-      <label for="inputEmail" class="sr-only">Email address</label>
+
+     <br> <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-      <label for="inputPassword" class="sr-only">Password</label>
+
+      <br> <label for="inputPassword" class="sr-only">Password</label>
       <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    
+      <br><label for="inputAdd" class="sr-only">Address</label>
+      <input type="text" name="address" id="inputAdd" class="form-control" placeholder="Address" required autofocus>
+
+      <br><label for="inputMobile" class="sr-only">Mobile No.</label>
+      <input type="tel" name="mobile" id="inputMobile" class="form-control" placeholder="Mobile No." required autofocus>
+      
+      <br>
       <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" onclick = 'this.form.submit();' type="button">Register</button>
     </form>
   </div>

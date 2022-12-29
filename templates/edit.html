@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>App</title>
+
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    
+   
+  </div>
+
+  <div class="jumbotron">
+    
+        <h3>{{msg}}</h3>
+   
+    <h1> Update Details</h1>
+   
+    <form  action="/edit" method="POST">
+
+     <br> <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="inputEmail" class="form-control" value={{ data['email'] }} required autofocus>
+
+    
+    
+      <br><label for="inputAdd" class="sr-only">Address</label>
+      <input type="text" name="address" id="inputAdd" class="form-control" value={{ data['Address'] }} required autofocus>
+
+    
+      
+      <br>
+      <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" onclick = 'this.form.submit();' type="button">Update</button>
+  </div>
+
+  
+
+</div>
+</body>
+</html>

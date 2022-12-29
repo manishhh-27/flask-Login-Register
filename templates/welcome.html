@@ -16,9 +16,31 @@
             <ul class="nav nav-pills pull-right">
                 <li role="presentation" class="active"><a href="/index">Logout</a>
                 </li>
+                <li role="presentation" class="active"><a href="/edit">Edit details</a>
+                </li>
                 
               
                 <h1>Sucessfully logged in as {{name}}</h1>
+
+           
+            <table>
+                {% for key,value in data.items() %}
+                {% if key!="password" and key!="_id" %}
+              <tr>
+                <th>
+                    {{ key }}
+                </th>
+                <th>
+                    {{ value }}
+                </th>
+              </tr>
+              {% endif %}
+             
+              {% endfor %}
+            </table>
+
+            
+           
                 
             </ul>
         </nav>
