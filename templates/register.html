@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>App</title>
+
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="header">
+    <nav>
+      <ul class="nav nav-pills pull-right">
+        <li role="presentation" ><a href="/index">Home</a></li>
+        <li role="presentation"><a href="/login">Login</a></li>
+        
+      </ul>
+    </nav>
+   
+  </div>
+
+  <div class="jumbotron">
+    <h3>{{msg}}</h3>
+    <h1>Register</h1>
+   
+    <form class="form-signin" action="/register" method="POST">
+      <label for="inputName" class="sr-only">Username</label>
+      <input type="name" name="username" id="inputName" class="form-control" placeholder="Username" required autofocus>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+      <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" onclick = 'this.form.submit();' type="button">Register</button>
+    </form>
+  </div>
+
+  
+
+</div>
+</body>
+</html>
