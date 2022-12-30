@@ -3,31 +3,34 @@
 <head>
   <title>App</title>
 
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="../static/app.css" rel="stylesheet">
 
 
 </head>
 
 <body>
-
-<div class="container">
-  <div class="header">
-    <nav>
-      <ul class="nav nav-pills pull-right">
-        <li role="presentation" ><a href="/index">Home</a></li>
-        <li role="presentation"><a href="/login">Login</a></li>
-        
-      </ul>
-    </nav>
-   
+  <div class="container">
+  <nav class="navbar bg-body-tertiary topnav">
+    <form class="container-fluid justify-content-start">
+      <div class="card-body"> 
+      <a href="/index" class="btn btn-primary m-r-10">Home</a>
+      <a href="/login" class="btn btn-primary">Login</a>
+    </form>
   </div>
+  </nav>
+
+
+  
+   
+
 
   <div class="jumbotron">
     <h3>{{msg}}</h3>
-    <h1>Register</h1>
+    
    
-    <form class="form-signin" action="/register" method="POST">
+    <form class="form-signin card" action="/register" method="POST">
+      <h1>Register</h1>
       <label for="inputName" class="sr-only">Username</label>
       <input type="name" name="username" id="inputName" class="form-control" placeholder="Username" required autofocus>
 
@@ -42,6 +45,9 @@
 
       <br><label for="inputMobile" class="sr-only">Mobile No.</label>
       <input type="tel" name="mobile" id="inputMobile" class="form-control" placeholder="Mobile No." required autofocus>
+
+      <br><label for="inputBio" class="sr-only">Bio</label>
+      <textarea id="inputBio" name="bio" class="form-control"></textarea>
       
       <br>
       <button id="btnSignUp" class="btn btn-lg btn-primary btn-block" onclick = 'this.form.submit();' type="button">Register</button>

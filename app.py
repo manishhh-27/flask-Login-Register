@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect,session
 from flask_pymongo import PyMongo
+import bcrypt
 
-from pymongo import MongoClient
 
 app = Flask(__name__)
 app.secret_key='hello'
@@ -28,12 +28,11 @@ def register():
         
     
 
-        
-        users.insert_one({'username': request.form['username'], 'password': request.form['password'], 'email': request.form['email'],'Address': request.form['address'],'Mobile No.': request.form['mobile']})
+        hashed = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+        users.insert_one({'username': request.form['username'], 'password': hashed, 'email': request.form['email'],'address': request.form['address'],'mobile_no': request.form['mobile'],'bio':request.form['bio']})
         return redirect(url_for('login'))
 
     return render_template('register.html')
-
 @app.route('/index')
 def index():
 
@@ -47,13 +46,13 @@ def login():
         login_user = users.find_one({'username': request.form['username']})
 
         if login_user:
-            if request.form['password']==login_user['password'] :
+            if  bcrypt.checkpw(request.form['password'].encode('utf-8'),login_user['password']):
                 session['username'] = request.form['username']
                 dat=request.form
                 return render_template('welcome.html',data=login_user)
         
         
-        return render_template('login.html',msg="Incorrect username or password")
+        return render_template('login.html',msg="Incorrect username or password!")
 
     return render_template('login.html')
 
@@ -68,7 +67,7 @@ def edit():
     users = mongo.db.users
     update_user = users.find_one({'username': session['username']})
     if request.method=='POST':
-        users.update_one({"username":update_user['username']},{ "$set": { 'email': request.form['email'],'Address':request.form['address'] }}  )
+        users.update_one({"username":update_user['username']},{ "$set": { 'email': request.form['email'],'address':request.form['address'],'mobile_no':request.form['mobile'] ,'bio':request.form['bio']}}  )
         update_user = users.find_one({'username': session['username']})
         return render_template('welcome.html',data=update_user)
 

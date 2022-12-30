@@ -3,8 +3,8 @@
 <head>
   <title>App</title>
 
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/jumbotron-narrow/jumbotron-narrow.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="../static/app.css" rel="stylesheet">
   
 </head>
 
@@ -20,17 +20,23 @@
     
         <h3>{{msg}}</h3>
    
-    <h1> Update Details</h1>
    
-    <form  action="/edit" method="POST">
-
+   
+    <form class="form-signin" action="/edit" method="POST">
+      <h1> Update Details</h1>
      <br> <label for="inputEmail" class="sr-only">Email address</label>
       <input type="email" name="email" id="inputEmail" class="form-control" value={{ data['email'] }} required autofocus>
 
     
     
       <br><label for="inputAdd" class="sr-only">Address</label>
-      <input type="text" name="address" id="inputAdd" class="form-control" value={{ data['Address'] }} required autofocus>
+      <input type="text" name="address" id="inputAdd" class="form-control" value={{ data['address'] }} required autofocus>
+
+      <br><label for="inputAdd" class="sr-only">Mobile No.</label>
+      <input type="text" name="mobile" id="inputAdd" class="form-control" value={{ data['mobile_no'] }} required autofocus>
+
+      <br><label for="inputBio" class="sr-only">Bio</label>
+      <textarea id="inputBio" name="bio" class="form-control">{{ data['bio'] }}</textarea>
 
     
       
